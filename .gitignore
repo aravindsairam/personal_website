@@ -1,0 +1,13 @@
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*~
+*.swp
+.vscode/
+.idea/
+
+# Local thumbnail artifact (not part of the site)
+.thumbnail
+
+# Internal design/dev notes (not part of the published site)
+docs/
