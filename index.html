@@ -267,7 +267,7 @@
   .info-row { font-size: 17px; font-weight: 600; }
   .info-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
   .info-div { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(var(--ink-rgb),.08); }
-  .info-note { font-size: 11px; line-height: 1.9; color: var(--dim); }
+  .info-note { font-size: 13px; line-height: 2; color: var(--muted); }
   .info-card p { margin: 5px 0 0; font-size: 13px; line-height: 1.55; color: var(--muted); }
 
   /* ---- field / gallery ---- */
@@ -398,17 +398,19 @@
     <span class="sec-num">/ 01</span><span class="sec-label">PROFILE</span><span class="sec-rule"></span>
   </div>
 
-  <p class="lead-statement" data-reveal>Robotics &amp; AI engineer with 5+ years building real-time autonomy and perception, <span class="hi">in the air and on the ground</span>. By day: ROS 2, PX4 &amp; MAVSDK, SLAM/VIO, Isaac Sim, and ML-based perception. After hours: a hand-built FPV drone, chasing the light.</p>
+  <p class="lead-statement" data-reveal>I'm a robotics and AI engineer with 5+ years of experience building autonomy and perception systems, <span class="hi">in the air and on the ground</span>. Most of my work comes down to helping drones and robots understand what's around them and decide what to do next.</p>
 
   <div class="cards">
     <div class="card" data-reveal data-lock="ROBOTICS & AUTONOMY">
       <div class="card-head mono"><span class="card-tag">▲ ROBOTICS</span><span class="card-meta">DOMAIN·01</span></div>
       <h3>Robotics &amp; Autonomy</h3>
       <ul class="mono">
-        <li><span class="b">›</span> ROS 2 · PX4 · MAVSDK · custom modes</li>
-        <li><span class="b">›</span> SLAM/VIO · Nav2 · Isaac ROS GEMs</li>
-        <li><span class="b">›</span> Isaac Sim &amp; Gazebo digital twins</li>
-        <li><span class="b">›</span> BehaviorTrees.CPP · ROS 2 diagnostics</li>
+        <li><span class="b">›</span> ROS 2 · PX4 · MAVSDK · Isaac ROS</li>
+        <li><span class="b">›</span> SLAM/VIO · Sensor Fusion · GPS-Denied Navigation</li>
+        <li><span class="b">›</span> Nav2 · MoveIt 2 · BehaviorTree.CPP · Lifecycle Nodes</li>
+        <li><span class="b">›</span> PCL · Sensor Calibration</li>
+        <li><span class="b">›</span> Isaac Sim &amp; Gazebo Digital Twins</li>
+        <li><span class="b">›</span> Embedded Systems · Linux</li>
       </ul>
       <div class="certs mono">
         <div class="certs-label">◷ LICENSED PILOT</div>
@@ -420,10 +422,12 @@
       <div class="card-head mono"><span class="card-tag">◆ AI</span><span class="card-meta">DOMAIN·02</span></div>
       <h3>AI &amp; Perception</h3>
       <ul class="mono">
-        <li><span class="b">›</span> PyTorch · TensorFlow · OpenCV</li>
-        <li><span class="b">›</span> Perception: segmentation, detection, 6D pose</li>
-        <li><span class="b">›</span> LLM agents: LangChain · LangGraph · RAG</li>
-        <li><span class="b">›</span> Zero-shot vision: GroundingDINO + SAM</li>
+        <li><span class="b">›</span> PyTorch · TensorFlow · scikit-learn · OpenCV</li>
+        <li><span class="b">›</span> Convolutional &amp; Recurrent Neural Networks · Transformers</li>
+        <li><span class="b">›</span> Segmentation, Detection, Object Tracking</li>
+        <li><span class="b">›</span> 6D Pose Estimation · Depth Estimation</li>
+        <li><span class="b">›</span> Image Encoders · Vector Databases</li>
+        <li><span class="b">›</span> LangChain · LangGraph · Langfuse · RAG</li>
       </ul>
     </div>
     <div class="card" data-reveal data-delay="160" data-lock="CODE I LIVE IN">
@@ -431,11 +435,12 @@
       <h3>Code I Live In</h3>
       <div class="chips mono">
         <span class="chip">Python</span><span class="chip">C++</span><span class="chip">ROS 2</span>
-        <span class="chip">PX4</span><span class="chip">MAVSDK</span><span class="chip">PyTorch</span>
-        <span class="chip">TensorFlow</span><span class="chip">OpenCV</span><span class="chip">Nav2</span>
-        <span class="chip">Isaac Sim</span><span class="chip">Gazebo</span><span class="chip">Docker</span>
-        <span class="chip">GitHub Actions</span><span class="chip">AWS</span><span class="chip">PostgreSQL</span>
-        <span class="chip">Pandas</span>
+        <span class="chip">PX4</span><span class="chip">MAVSDK</span><span class="chip">Nav2</span>
+        <span class="chip">MoveIt 2</span><span class="chip">Isaac Sim</span><span class="chip">Gazebo</span>
+        <span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">scikit-learn</span>
+        <span class="chip">OpenCV</span><span class="chip">pandas</span><span class="chip">PySpark</span>
+        <span class="chip">PostgreSQL</span><span class="chip">Docker</span><span class="chip">CI/CD · GitHub Actions</span>
+        <span class="chip">AWS · S3 · EC2 · Lambda · Fargate</span><span class="chip">Cloudflare</span>
       </div>
     </div>
   </div>
@@ -458,7 +463,7 @@
         </div>
         <div class="period mono">APR 2024 → PRESENT<br>REMOTE</div>
       </div>
-      <p class="tl-desc">Built Isaac Sim digital twins of a custom omnidirectional robot, tuned Isaac ROS Visual SLAM with stereo VIO + 2D-LiDAR localization, and shipped a LangChain/LangGraph natural-language control interface (GroundingDINO + SAM). Authored custom PX4 cleaning maneuvers and a BehaviorTrees.CPP mission state machine with lifecycle &amp; diagnostics.</p>
+      <p class="tl-desc">Built Isaac Sim digital twins of a custom omnidirectional robot, tuned Isaac ROS Visual SLAM with stereo VIO + 2D-LiDAR localization, and shipped a LangChain/LangGraph natural-language control interface (GroundingDINO + SAM). Authored custom PX4 cleaning maneuvers and a BehaviorTree.CPP mission state machine with lifecycle &amp; diagnostics.</p>
     </div>
 
     <div class="tl-item" data-reveal data-lock="VERENIA">
@@ -510,9 +515,12 @@
         <div class="info-row">B.E. Electronics &amp; Communication</div>
         <div class="info-sub mono">Anna University, Chennai · 2017</div>
       </div>
-      <div class="info-div info-note mono">
-        <div>↳ TensorFlow Developer Specialization · DeepLearning.AI 2022</div>
-        <div>↳ Deep Learning Specialization · DeepLearning.AI 2022</div>
+      <div class="info-div">
+        <span class="info-tag mono">◇ CERTIFICATIONS</span>
+        <div class="info-note mono" style="margin-top:12px;">
+          <div>↳ TensorFlow Developer Specialization · DeepLearning.AI 2022</div>
+          <div>↳ Deep Learning Specialization · DeepLearning.AI 2022</div>
+        </div>
       </div>
     </div>
 
@@ -524,7 +532,7 @@
       </div>
       <div class="info-div">
         <div class="info-row">RAG Chatbot · Willeder Inc</div>
-        <p>OpenAI LLMs + LangChain + FAISS over a salon knowledge base, with session-memory compaction for long multi-turn chats.</p>
+        <p>OpenAI LLMs + LangChain + Faiss over a salon knowledge base, with session-memory compaction for long multi-turn chats.</p>
       </div>
       <div class="info-div">
         <div class="info-row">Speech Denoising · BabbleLabs (Cisco)</div>
@@ -548,22 +556,7 @@
       <noscript><video src="DD.mp4" autoplay muted loop playsinline preload="metadata" poster="images/dd-poster.jpg" aria-label="Drone Dawg channel title reveal"></video></noscript>
     </div>
 
-    <div class="frame wide" data-reveal data-delay="60" data-lock="FRAME 04">
-      <div class="ph">FOG LAYER</div>
-      <img src="images/field-04.jpg" alt="Aerial shot, fog layer" loading="lazy" onerror="this.style.display='none'">
-      <div class="frame-cap mono"><div class="cap-main" style="font-size:12px;">FOG LAYER</div></div>
-    </div>
-
-    <div class="frame wide" data-reveal data-delay="120" data-lock="FRAME 03">
-      <div class="ph">ORBIT / CITY GRID</div>
-      <img src="images/field-03.jpg" alt="Aerial shot, orbit over city grid" loading="lazy" onerror="this.style.display='none'">
-      <div class="frame-cap mono">
-        <div class="rec">◉ REC · 01:48</div>
-        <div class="cap-main" style="font-size:12px; margin-top:5px;">ORBIT / CITY GRID</div>
-      </div>
-    </div>
-
-    <div class="frame third" data-reveal data-lock="AERIAL STILLS" data-slideshow>
+    <div class="frame big" data-reveal data-delay="60" data-lock="AERIAL STILLS" data-slideshow>
       <div class="ph">AERIAL STILLS</div>
       <img src="images/aerial-1.jpg" alt="Aerial drone photo" class="slide active" loading="lazy">
       <img src="images/aerial-2.jpg" alt="Aerial drone photo" class="slide" loading="lazy">
@@ -579,19 +572,19 @@
       </div>
     </div>
 
-    <div class="frame third" data-reveal data-delay="60" data-lock="FRAME 05">
+    <div class="frame wide" data-reveal data-delay="60" data-lock="FRAME 05">
       <div class="ph">SWITCHBACKS</div>
       <img src="images/field-05.jpg" alt="Aerial shot, switchbacks" loading="lazy" onerror="this.style.display='none'">
-      <div class="frame-cap mono"><div class="cap-main" style="font-size:11px;">SWITCHBACKS</div></div>
+      <div class="frame-cap mono"><div class="cap-main" style="font-size:12px;">SWITCHBACKS</div></div>
     </div>
 
-    <div class="frame third" data-reveal data-delay="120" data-lock="FRAME 06">
+    <div class="frame wide" data-reveal data-delay="120" data-lock="FRAME 06">
       <div class="ph">ADD FOOTAGE</div>
       <img src="images/field-06.jpg" alt="Aerial shot" loading="lazy" onerror="this.style.display='none'">
       <div class="frame-cap mono"><div class="rec">◉ REC · 02:30</div></div>
     </div>
   </div>
-  <div class="gallery-note mono">// drop your aerials into <strong>images/field-01.jpg … field-06.jpg</strong>, they slot right in.</div>
+  <div class="gallery-note mono">// drop your aerials into <strong>images/field-05.jpg</strong> and <strong>field-06.jpg</strong>, they slot right in.</div>
 </section>
 
 <!-- ============ CONTACT ============ -->
