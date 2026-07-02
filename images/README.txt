@@ -10,4 +10,6 @@ Drop your aerial / drone photos here, named:
 They slot straight into the FIELD CAPTURE gallery. JPG, PNG, or WebP all work
 (just keep the .jpg name, or edit the src in index.html to match).
 
-Optional: add og-cover.png (1200x630) for the social-media link preview.
+og-cover.png (1200x630) is the social-media link preview card, referenced
+from the og:image / twitter:image meta tags in index.html. Replace it with
+any 1200x630 image to change what LinkedIn/Twitter/iMessage show.
