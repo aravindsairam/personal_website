@@ -259,6 +259,9 @@
   .company { font-size: 12px; letter-spacing: 1.5px; color: var(--ac); margin-top: 5px; }
   .period { font-size: 11px; letter-spacing: 1px; color: var(--dim); text-align: right; line-height: 1.6; }
   .tl-desc { margin: 14px 0 0; max-width: 780px; font-size: 15px; line-height: 1.65; color: var(--muted); }
+  .tl-list { margin: 14px 0 0; max-width: 780px; padding: 0; list-style: none; }
+  .tl-list li { position: relative; padding-left: 20px; margin-top: 7px; font-size: 15px; line-height: 1.6; color: var(--muted); }
+  .tl-list li::before { content: '›'; position: absolute; left: 0; color: var(--ac); }
 
   .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 48px; }
   .info-card { border: 1px solid rgba(var(--ink-rgb),.1); border-radius: 6px; padding: 30px; background: linear-gradient(180deg, rgba(var(--ink-rgb),.02), transparent); transition: border-color .3s, transform .3s; }
@@ -463,7 +466,13 @@
         </div>
         <div class="period mono">APR 2024 → PRESENT<br>REMOTE</div>
       </div>
-      <p class="tl-desc">Built Isaac Sim digital twins of a custom omnidirectional robot, tuned Isaac ROS Visual SLAM with stereo VIO + 2D-LiDAR localization, and shipped a LangChain/LangGraph natural-language control interface (GroundingDINO + SAM). Authored custom PX4 cleaning maneuvers and a BehaviorTree.CPP mission state machine with lifecycle &amp; diagnostics.</p>
+      <ul class="tl-list">
+        <li>Built a digital twin of a custom omnidirectional robot in Isaac Sim and deployed a simulation regression stack on AWS EC2 for automated pre-field validation.</li>
+        <li>Tuned Isaac ROS Visual SLAM with stereo VIO and 2D-LiDAR localization for robust, embedded-ready navigation.</li>
+        <li>Shipped a natural-language robot control interface using LangChain/LangGraph with zero-shot perception (GroundingDINO + SAM).</li>
+        <li>Designed cleaning maneuvers for an automated cleaning drone with custom PX4 modes, and a Nav2 coverage planner for pressure-washing ground robots.</li>
+        <li>Built the mission state machine in BehaviorTree.CPP with lifecycle nodes and diagnostics for fault detection and recovery.</li>
+      </ul>
     </div>
 
     <div class="tl-item" data-reveal data-lock="VERENIA">
@@ -475,7 +484,12 @@
         </div>
         <div class="period mono">JUN 2023 → APR 2024<br>REMOTE</div>
       </div>
-      <p class="tl-desc">Wrote control software for multicopters and differential-drive rovers (Python · ROS · PX4 · MAVSDK), partnered with hardware teams on custom firmware tuning, and delivered GPS-denied indoor navigation with VIO + depth sensing, validated in Gazebo before field deployment.</p>
+      <ul class="tl-list">
+        <li>Developed control software for multicopter drones and differential-drive rovers using Python, ROS, PX4, and MAVSDK.</li>
+        <li>Partnered with hardware teams to configure, flash, and test custom PX4 firmware tuned to each vehicle's dynamics.</li>
+        <li>Implemented GPS-denied indoor navigation with visual-inertial odometry and depth sensing.</li>
+        <li>Built a Gazebo simulation environment to validate control and navigation before field deployment.</li>
+      </ul>
     </div>
 
     <div class="tl-item" data-reveal data-lock="UNITED ROBOTS">
@@ -487,7 +501,12 @@
         </div>
         <div class="period mono">JUL 2020 → MAY 2023<br>WARSAW, PL</div>
       </div>
-      <p class="tl-desc">ROS diagnostics tooling in C++, real-time PCL point-cloud filtering for LiDAR &amp; depth streams, and intrinsic/extrinsic sensor calibration (RANSAC/ICP). Prototyped perception pipelines: YOLOv7 instance segmentation projected into 3D, and 6D docking-target pose estimation via particle filtering.</p>
+      <ul class="tl-list">
+        <li>Built a ROS diagnostics application in C++ to monitor system health and telemetry across robot platforms.</li>
+        <li>Implemented real-time point-cloud filtering for LiDAR and depth-camera streams using PCL.</li>
+        <li>Developed intrinsic and extrinsic calibration tooling for cameras, LiDAR, and ToF sensors with RANSAC and ICP.</li>
+        <li>Prototyped perception pipelines: YOLOv7 instance segmentation projected into 3D point clouds and 6D docking-target pose estimation with particle filtering.</li>
+      </ul>
     </div>
 
     <div class="tl-item" data-reveal data-lock="AVANTARI">
@@ -499,7 +518,10 @@
         </div>
         <div class="period mono">FEB 2018 → SEP 2018<br>HYDERABAD, IN</div>
       </div>
-      <p class="tl-desc">Built a preprocessing pipeline for a synthetic-media detection system (OpenCV · TensorFlow) and ran EDA on multimedia datasets to improve data quality and model-iteration efficiency.</p>
+      <ul class="tl-list">
+        <li>Built the preprocessing pipeline for a synthetic-media detection system using OpenCV and TensorFlow.</li>
+        <li>Ran EDA on multimedia datasets with pandas and Matplotlib to improve data quality and model iteration.</li>
+      </ul>
     </div>
   </div>
 
@@ -528,15 +550,15 @@
       <span class="info-tag mono">◆ SELECTED PROJECTS</span>
       <div style="margin-top:22px;">
         <div class="info-row">FPV Drone Build</div>
-        <p>Custom 5″ build: ExpressLRS link, Walksnail digital video, hand-tuned ESC/motor/PID. EU A1/A3 certified; cinematic &amp; freestyle.</p>
+        <p>Built a custom 5-inch FPV drone with an ExpressLRS control link and Walksnail digital video, tuning everything from motors and ESCs to PIDs by hand. I fly it for both cinematic and freestyle shots.</p>
       </div>
       <div class="info-div">
         <div class="info-row">RAG Chatbot · Willeder Inc</div>
-        <p>OpenAI LLMs + LangChain + Faiss over a salon knowledge base, with session-memory compaction for long multi-turn chats.</p>
+        <p>A customer-support chatbot for a salon, built with OpenAI LLMs, LangChain, and Faiss over a curated knowledge base. Session memory with summarization keeps long multi-turn conversations coherent.</p>
       </div>
       <div class="info-div">
         <div class="info-row">Speech Denoising · BabbleLabs (Cisco)</div>
-        <p>U-Net speech-denoising model in PyTorch, evaluated with SSNR / PESQ across datasets.</p>
+        <p>Designed and trained a U-Net speech-denoising model in PyTorch, from data preprocessing to training, and evaluated it with speech-quality metrics like SSNR and PESQ across datasets.</p>
       </div>
     </div>
   </div>
