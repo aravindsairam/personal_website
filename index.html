@@ -9,8 +9,11 @@
   try {
     document.documentElement.setAttribute('data-theme',
       localStorage.getItem('theme') === 'light' ? 'light' : 'dark');
+    document.documentElement.setAttribute('data-lang',
+      localStorage.getItem('lang') === 'pl' ? 'pl' : 'en');
   } catch (e) {
     document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.setAttribute('data-lang', 'en');
   }
 </script>
 
@@ -183,6 +186,11 @@
   html[data-theme="dark"]  .theme-toggle .tt-opt[data-tt="dark"],
   html[data-theme="light"] .theme-toggle .tt-opt[data-tt="light"] { color: var(--ac); opacity: 1; }
 
+  /* ---- language toggle (EN / PL), shares the theme-toggle look ---- */
+  html[data-lang="en"] .theme-toggle .tt-opt[data-lt="en"],
+  html[data-lang="pl"] .theme-toggle .tt-opt[data-lt="pl"] { color: var(--ac); opacity: 1; }
+  .no-js [data-lang-toggle] { display: none; }
+
   /* ---- layout ---- */
   .section { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; padding: 110px 32px; }
   .sec-head { display: flex; align-items: center; gap: 20px; }
@@ -325,6 +333,8 @@
     .nav { padding: 14px 20px; }
     .brand .tag, .brand .status { display: none; }
     .nav-links { gap: 16px; }
+    .nav-right { gap: 12px; }
+    .theme-toggle { padding: 6px 8px; }
     .section { padding: 80px 20px; }
     .hero { padding: 100px 20px 56px; }
     .radar { display: none; }
@@ -343,22 +353,27 @@
 <nav class="nav">
   <div class="brand mono">
     <span class="led"></span>
-    <span class="name">WELCOME</span>
+    <span class="name" data-i18n="nav.brand">WELCOME</span>
     <span class="tag">// PORTFOLIO</span>
     <span class="status">// ONLINE</span>
   </div>
   <div class="nav-right">
     <div class="nav-links mono">
-      <a href="#about">01<span class="l">·ABOUT</span></a>
-      <a href="#work">02<span class="l">·WORK</span></a>
-      <a href="#field">03<span class="l">·FIELD</span></a>
-      <a href="#contact">04<span class="l">·CONTACT</span></a>
+      <a href="#about">01<span class="l" data-i18n="nav.about">·ABOUT</span></a>
+      <a href="#work">02<span class="l" data-i18n="nav.work">·WORK</span></a>
+      <a href="#field">03<span class="l" data-i18n="nav.field">·FIELD</span></a>
+      <a href="#contact">04<span class="l" data-i18n="nav.contact">·CONTACT</span></a>
     </div>
+    <button type="button" class="theme-toggle mono" data-lang-toggle aria-label="Change language / Zmień język">
+      <span class="tt-opt" data-lt="en">EN</span>
+      <span class="tt-sep" aria-hidden="true">/</span>
+      <span class="tt-opt" data-lt="pl">PL</span>
+    </button>
     <button type="button" class="theme-toggle mono" data-theme-toggle aria-label="Toggle day or night theme">
       <span class="tt-ico" aria-hidden="true">◐</span>
-      <span class="tt-opt" data-tt="dark">NIGHT</span>
+      <span class="tt-opt" data-tt="dark" data-i18n="theme.night">NIGHT</span>
       <span class="tt-sep" aria-hidden="true">/</span>
-      <span class="tt-opt" data-tt="light">DAY</span>
+      <span class="tt-opt" data-tt="light" data-i18n="theme.day">DAY</span>
     </button>
   </div>
 </nav>
@@ -372,10 +387,10 @@
     <div class="blip"></div>
   </div>
 
-  <div class="eyebrow mono">ROBOTICS&nbsp;&amp;&nbsp;AI&nbsp;ENGINEER</div>
+  <div class="eyebrow mono" data-i18n="hero.eyebrow">ROBOTICS&nbsp;&amp;&nbsp;AI&nbsp;ENGINEER</div>
   <h1>ARAVIND SAIRAM<br>SUBBURAM</h1>
-  <p class="hero-lead">I'm from Chennai, India, and these days I live in Warsaw, Poland. I write software for robots and drones for a living, which works out well because programming and building things is what I'd be doing anyway. Outside of work I fly drones, and I'm licensed to fly in both India and the EU. I play computer games and I'm a big God of War fan. I watch a lot of MMA and boxing.</p>
-  <p class="hero-lead" style="margin-top:16px;">I love cooking Indian food and trying food from different cultures, which is half the reason I like to travel. I'm curious about investing and economics too, though more about understanding how companies work than actually trading. I speak Tamil and English, a bit of French, and I just started learning Polish. Some days I get bored and just sit around doing nothing, and that's fine too.</p>
+  <p class="hero-lead" data-i18n="hero.lead1">I'm from Chennai, India, and these days I live in Warsaw, Poland. I write software for robots and drones for a living, which works out well because programming and building things is what I'd be doing anyway. Outside of work I fly drones, and I'm licensed to fly in both India and the EU. I play computer games and I'm a big God of War fan. I watch a lot of MMA and boxing.</p>
+  <p class="hero-lead" style="margin-top:16px;" data-i18n="hero.lead2">I love cooking Indian food and trying food from different cultures, which is half the reason I like to travel. I'm curious about investing and economics too, though more about understanding how companies work than actually trading. I speak Tamil and English, a bit of French, and I just started learning Polish. Some days I get bored and just sit around doing nothing, and that's fine too.</p>
 
   <div class="terminal mono">
     <span class="p">$</span> ./deploy --target=field --status<br>
@@ -391,22 +406,22 @@
   </div>
 
   <div class="scrollcue mono">
-    <span class="arr">↓</span> SCROLL · LAT <span data-lat>52.2297</span> · LON <span data-lon>21.0122</span>
+    <span class="arr">↓</span> <span data-i18n="hero.scroll">SCROLL</span> · LAT <span data-lat>52.2297</span> · LON <span data-lon>21.0122</span>
   </div>
 </header>
 
 <!-- ============ ABOUT ============ -->
 <section id="about" class="section">
   <div class="sec-head mono" data-reveal style="margin-bottom:56px;">
-    <span class="sec-num">/ 01</span><span class="sec-label">PROFILE</span><span class="sec-rule"></span>
+    <span class="sec-num">/ 01</span><span class="sec-label" data-i18n="sec.profile">PROFILE</span><span class="sec-rule"></span>
   </div>
 
-  <p class="lead-statement" data-reveal>I'm a robotics and AI engineer with 5+ years of experience building autonomy and perception systems, <span class="hi">in the air and on the ground</span>. Most of my work comes down to helping drones and robots understand what's around them and decide what to do next.</p>
+  <p class="lead-statement" data-reveal data-i18n="about.lead">I'm a robotics and AI engineer with 5+ years of experience building autonomy and perception systems, <span class="hi">in the air and on the ground</span>. Most of my work comes down to helping drones and robots understand what's around them and decide what to do next.</p>
 
   <div class="cards">
     <div class="card" data-reveal data-lock="ROBOTICS & AUTONOMY">
-      <div class="card-head mono"><span class="card-tag">▲ ROBOTICS</span><span class="card-meta">DOMAIN·01</span></div>
-      <h3>Robotics &amp; Autonomy</h3>
+      <div class="card-head mono"><span class="card-tag" data-i18n="card.robotics.tag">▲ ROBOTICS</span><span class="card-meta" data-i18n="card.meta1">DOMAIN·01</span></div>
+      <h3 data-i18n="card.robotics.h3">Robotics &amp; Autonomy</h3>
       <ul class="mono">
         <li><span class="b">›</span> ROS 2 · PX4 · MAVSDK · Isaac ROS</li>
         <li><span class="b">›</span> SLAM/VIO · Sensor Fusion · GPS-Denied Navigation</li>
@@ -416,14 +431,14 @@
         <li><span class="b">›</span> Embedded Systems · Linux</li>
       </ul>
       <div class="certs mono">
-        <div class="certs-label">◷ LICENSED PILOT</div>
-        <div class="cert"><span class="flag" role="img" aria-label="India"><svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#fff"/><rect width="30" height="6.67" fill="#ff9933"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><g stroke="#008" stroke-width=".3" fill="none"><circle cx="15" cy="10" r="2.6"/><line x1="12.4" y1="10" x2="17.6" y2="10"/><line x1="12.75" y1="8.7" x2="17.25" y2="11.3"/><line x1="13.7" y1="7.75" x2="16.3" y2="12.25"/><line x1="15" y1="7.4" x2="15" y2="12.6"/><line x1="16.3" y1="7.75" x2="13.7" y2="12.25"/><line x1="17.25" y1="8.7" x2="12.75" y2="11.3"/></g><circle cx="15" cy="10" r=".6" fill="#008"/></svg></span> DGCA Certified Drone Pilot</div>
-        <div class="cert"><span class="flag" role="img" aria-label="European Union"><svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#039"/><g fill="#fc0"><circle cx="15" cy="4" r="1.2"/><circle cx="18" cy="4.8" r="1.2"/><circle cx="20.2" cy="7" r="1.2"/><circle cx="21" cy="10" r="1.2"/><circle cx="20.2" cy="13" r="1.2"/><circle cx="18" cy="15.2" r="1.2"/><circle cx="15" cy="16" r="1.2"/><circle cx="12" cy="15.2" r="1.2"/><circle cx="9.8" cy="13" r="1.2"/><circle cx="9" cy="10" r="1.2"/><circle cx="9.8" cy="7" r="1.2"/><circle cx="12" cy="4.8" r="1.2"/></g></svg></span> A1/A3 Remote Pilot</div>
+        <div class="certs-label" data-i18n="certs.label">◷ LICENSED PILOT</div>
+        <div class="cert"><span class="flag" role="img" aria-label="India"><svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#fff"/><rect width="30" height="6.67" fill="#ff9933"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><g stroke="#008" stroke-width=".3" fill="none"><circle cx="15" cy="10" r="2.6"/><line x1="12.4" y1="10" x2="17.6" y2="10"/><line x1="12.75" y1="8.7" x2="17.25" y2="11.3"/><line x1="13.7" y1="7.75" x2="16.3" y2="12.25"/><line x1="15" y1="7.4" x2="15" y2="12.6"/><line x1="16.3" y1="7.75" x2="13.7" y2="12.25"/><line x1="17.25" y1="8.7" x2="12.75" y2="11.3"/></g><circle cx="15" cy="10" r=".6" fill="#008"/></svg></span> <span data-i18n="cert.dgca">DGCA Certified Drone Pilot</span></div>
+        <div class="cert"><span class="flag" role="img" aria-label="European Union"><svg viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg"><rect width="30" height="20" fill="#039"/><g fill="#fc0"><circle cx="15" cy="4" r="1.2"/><circle cx="18" cy="4.8" r="1.2"/><circle cx="20.2" cy="7" r="1.2"/><circle cx="21" cy="10" r="1.2"/><circle cx="20.2" cy="13" r="1.2"/><circle cx="18" cy="15.2" r="1.2"/><circle cx="15" cy="16" r="1.2"/><circle cx="12" cy="15.2" r="1.2"/><circle cx="9.8" cy="13" r="1.2"/><circle cx="9" cy="10" r="1.2"/><circle cx="9.8" cy="7" r="1.2"/><circle cx="12" cy="4.8" r="1.2"/></g></svg></span> <span data-i18n="cert.eu">A1/A3 Remote Pilot</span></div>
       </div>
     </div>
     <div class="card" data-reveal data-delay="80" data-lock="AI & PERCEPTION">
-      <div class="card-head mono"><span class="card-tag">◆ AI</span><span class="card-meta">DOMAIN·02</span></div>
-      <h3>AI &amp; Perception</h3>
+      <div class="card-head mono"><span class="card-tag">◆ AI</span><span class="card-meta" data-i18n="card.meta2">DOMAIN·02</span></div>
+      <h3 data-i18n="card.ai.h3">AI &amp; Perception</h3>
       <ul class="mono">
         <li><span class="b">›</span> PyTorch · TensorFlow · scikit-learn · OpenCV</li>
         <li><span class="b">›</span> Convolutional &amp; Recurrent Neural Networks · Transformers</li>
@@ -435,7 +450,7 @@
     </div>
     <div class="card" data-reveal data-delay="160" data-lock="CODE I LIVE IN">
       <div class="card-head mono"><span class="card-tag">&lt;/&gt; STACK</span><span class="card-meta">TOOLCHAIN</span></div>
-      <h3>Code I Live In</h3>
+      <h3 data-i18n="card.stack.h3">Code I Live In</h3>
       <div class="chips mono">
         <span class="chip">Python</span><span class="chip">C++</span><span class="chip">ROS 2</span>
         <span class="chip">PX4</span><span class="chip">MAVSDK</span><span class="chip">Nav2</span>
@@ -452,26 +467,26 @@
 <!-- ============ WORK / EXPERIENCE ============ -->
 <section id="work" class="section">
   <div class="sec-head mono" data-reveal style="margin-bottom:14px;">
-    <span class="sec-num">/ 02</span><span class="sec-label">TRAJECTORY</span><span class="sec-rule"></span>
+    <span class="sec-num">/ 02</span><span class="sec-label" data-i18n="sec.trajectory">TRAJECTORY</span><span class="sec-rule"></span>
   </div>
-  <h2 class="lede2" data-reveal>Five years in the field.</h2>
+  <h2 class="lede2" data-reveal data-i18n="work.lede">Five years in the field.</h2>
 
   <div class="timeline">
     <div class="tl-item" data-reveal data-lock="LUCID BOTS">
       <span class="tl-dot live"></span>
       <div class="tl-top">
         <div>
-          <div class="role">Senior Robotics Software Engineer</div>
+          <div class="role" data-i18n="job1.role">Senior Robotics Software Engineer</div>
           <div class="company mono">LUCID BOTS INC</div>
         </div>
-        <div class="period mono">APR 2024 → PRESENT<br>REMOTE</div>
+        <div class="period mono" data-i18n="job1.period">APR 2024 → PRESENT<br>REMOTE</div>
       </div>
       <ul class="tl-list">
-        <li>Built a digital twin of a custom omnidirectional robot in Isaac Sim and deployed a simulation regression stack on AWS EC2 for automated pre-field validation.</li>
-        <li>Tuned Isaac ROS Visual SLAM with stereo VIO and 2D-LiDAR localization for robust, embedded-ready navigation.</li>
-        <li>Shipped a natural-language robot control interface using LangChain/LangGraph with zero-shot perception (GroundingDINO + SAM).</li>
-        <li>Designed cleaning maneuvers for an automated cleaning drone with custom PX4 modes, and a Nav2 coverage planner for pressure-washing ground robots.</li>
-        <li>Built the mission state machine in BehaviorTree.CPP with lifecycle nodes and diagnostics for fault detection and recovery.</li>
+        <li data-i18n="job1.b1">Built a digital twin of a custom omnidirectional robot in Isaac Sim and deployed a simulation regression stack on AWS EC2 for automated pre-field validation.</li>
+        <li data-i18n="job1.b2">Tuned Isaac ROS Visual SLAM with stereo VIO and 2D-LiDAR localization for robust, embedded-ready navigation.</li>
+        <li data-i18n="job1.b3">Shipped a natural-language robot control interface using LangChain/LangGraph with zero-shot perception (GroundingDINO + SAM).</li>
+        <li data-i18n="job1.b4">Designed cleaning maneuvers for an automated cleaning drone with custom PX4 modes, and a Nav2 coverage planner for pressure-washing ground robots.</li>
+        <li data-i18n="job1.b5">Built the mission state machine in BehaviorTree.CPP with lifecycle nodes and diagnostics for fault detection and recovery.</li>
       </ul>
     </div>
 
@@ -479,16 +494,16 @@
       <span class="tl-dot past"></span>
       <div class="tl-top">
         <div>
-          <div class="role">Software Developer</div>
+          <div class="role" data-i18n="job2.role">Software Developer</div>
           <div class="company mono">VERENIA</div>
         </div>
-        <div class="period mono">JUN 2023 → APR 2024<br>REMOTE</div>
+        <div class="period mono" data-i18n="job2.period">JUN 2023 → APR 2024<br>REMOTE</div>
       </div>
       <ul class="tl-list">
-        <li>Developed control software for multicopter drones and differential-drive rovers using Python, ROS, PX4, and MAVSDK.</li>
-        <li>Partnered with hardware teams to configure, flash, and test custom PX4 firmware tuned to each vehicle's dynamics.</li>
-        <li>Implemented GPS-denied indoor navigation with visual-inertial odometry and depth sensing.</li>
-        <li>Built a Gazebo simulation environment to validate control and navigation before field deployment.</li>
+        <li data-i18n="job2.b1">Developed control software for multicopter drones and differential-drive rovers using Python, ROS, PX4, and MAVSDK.</li>
+        <li data-i18n="job2.b2">Partnered with hardware teams to configure, flash, and test custom PX4 firmware tuned to each vehicle's dynamics.</li>
+        <li data-i18n="job2.b3">Implemented GPS-denied indoor navigation with visual-inertial odometry and depth sensing.</li>
+        <li data-i18n="job2.b4">Built a Gazebo simulation environment to validate control and navigation before field deployment.</li>
       </ul>
     </div>
 
@@ -496,16 +511,16 @@
       <span class="tl-dot past"></span>
       <div class="tl-top">
         <div>
-          <div class="role">Robotic Software Developer</div>
+          <div class="role" data-i18n="job3.role">Robotic Software Developer</div>
           <div class="company mono">UNITED ROBOTS</div>
         </div>
-        <div class="period mono">JUL 2020 → MAY 2023<br>WARSAW, PL</div>
+        <div class="period mono" data-i18n="job3.period">JUL 2020 → MAY 2023<br>WARSAW, PL</div>
       </div>
       <ul class="tl-list">
-        <li>Built a ROS diagnostics application in C++ to monitor system health and telemetry across robot platforms.</li>
-        <li>Implemented real-time point-cloud filtering for LiDAR and depth-camera streams using PCL.</li>
-        <li>Developed intrinsic and extrinsic calibration tooling for cameras, LiDAR, and ToF sensors with RANSAC and ICP.</li>
-        <li>Prototyped perception pipelines: YOLOv7 instance segmentation projected into 3D point clouds and 6D docking-target pose estimation with particle filtering.</li>
+        <li data-i18n="job3.b1">Built a ROS diagnostics application in C++ to monitor system health and telemetry across robot platforms.</li>
+        <li data-i18n="job3.b2">Implemented real-time point-cloud filtering for LiDAR and depth-camera streams using PCL.</li>
+        <li data-i18n="job3.b3">Developed intrinsic and extrinsic calibration tooling for cameras, LiDAR, and ToF sensors with RANSAC and ICP.</li>
+        <li data-i18n="job3.b4">Prototyped perception pipelines: YOLOv7 instance segmentation projected into 3D point clouds and 6D docking-target pose estimation with particle filtering.</li>
       </ul>
     </div>
 
@@ -513,14 +528,14 @@
       <span class="tl-dot past"></span>
       <div class="tl-top">
         <div>
-          <div class="role">Python Developer</div>
+          <div class="role" data-i18n="job4.role">Python Developer</div>
           <div class="company mono">AVANTARI MEDICAL TECHNOLOGIES</div>
         </div>
-        <div class="period mono">FEB 2018 → SEP 2018<br>HYDERABAD, IN</div>
+        <div class="period mono" data-i18n="job4.period">FEB 2018 → SEP 2018<br>HYDERABAD, IN</div>
       </div>
       <ul class="tl-list">
-        <li>Built the preprocessing pipeline for a synthetic-media detection system using OpenCV and TensorFlow.</li>
-        <li>Ran EDA on multimedia datasets with pandas and Matplotlib to improve data quality and model iteration.</li>
+        <li data-i18n="job4.b1">Built the preprocessing pipeline for a synthetic-media detection system using OpenCV and TensorFlow.</li>
+        <li data-i18n="job4.b2">Ran EDA on multimedia datasets with pandas and Matplotlib to improve data quality and model iteration.</li>
       </ul>
     </div>
   </div>
@@ -528,17 +543,17 @@
   <!-- Education + projects -->
   <div class="grid-2">
     <div class="info-card" data-reveal data-lock="EDUCATION">
-      <span class="info-tag mono">◇ EDUCATION</span>
+      <span class="info-tag mono" data-i18n="edu.tag">◇ EDUCATION</span>
       <div style="margin-top:22px;">
-        <div class="info-row">M.Sc. Computer Science</div>
-        <div class="info-sub mono">Warsaw University of Technology · 2021</div>
+        <div class="info-row" data-i18n="edu.msc">M.Sc. Computer Science</div>
+        <div class="info-sub mono" data-i18n="edu.msc.sub">Warsaw University of Technology · 2021</div>
       </div>
       <div class="info-div">
-        <div class="info-row">B.E. Electronics &amp; Communication</div>
+        <div class="info-row" data-i18n="edu.be">B.E. Electronics &amp; Communication</div>
         <div class="info-sub mono">Anna University, Chennai · 2017</div>
       </div>
       <div class="info-div">
-        <span class="info-tag mono">◇ CERTIFICATIONS</span>
+        <span class="info-tag mono" data-i18n="certs2.tag">◇ CERTIFICATIONS</span>
         <div class="info-note mono" style="margin-top:12px;">
           <div>↳ TensorFlow Developer Specialization · DeepLearning.AI 2022</div>
           <div>↳ Deep Learning Specialization · DeepLearning.AI 2022</div>
@@ -547,18 +562,18 @@
     </div>
 
     <div class="info-card" data-reveal data-delay="80" data-lock="PROJECTS">
-      <span class="info-tag mono">◆ SELECTED PROJECTS</span>
+      <span class="info-tag mono" data-i18n="proj.tag">◆ SELECTED PROJECTS</span>
       <div style="margin-top:22px;">
-        <div class="info-row">FPV Drone Build</div>
-        <p>Built a custom 5-inch FPV drone with an ExpressLRS control link and Walksnail digital video, tuning everything from motors and ESCs to PIDs by hand. I fly it for both cinematic and freestyle shots.</p>
+        <div class="info-row" data-i18n="proj1.title">FPV Drone Build</div>
+        <p data-i18n="proj1.p">Built a custom 5-inch FPV drone with an ExpressLRS control link and Walksnail digital video, tuning everything from motors and ESCs to PIDs by hand. I fly it for both cinematic and freestyle shots.</p>
       </div>
       <div class="info-div">
-        <div class="info-row">RAG Chatbot · Willeder Inc</div>
-        <p>A customer-support chatbot for a salon, built with OpenAI LLMs, LangChain, and Faiss over a curated knowledge base. Session memory with summarization keeps long multi-turn conversations coherent.</p>
+        <div class="info-row" data-i18n="proj2.title">RAG Chatbot · Willeder Inc</div>
+        <p data-i18n="proj2.p">A customer-support chatbot for a salon, built with OpenAI LLMs, LangChain, and Faiss over a curated knowledge base. Session memory with summarization keeps long multi-turn conversations coherent.</p>
       </div>
       <div class="info-div">
-        <div class="info-row">Speech Denoising · BabbleLabs (Cisco)</div>
-        <p>Designed and trained a U-Net speech-denoising model in PyTorch, from data preprocessing to training, and evaluated it with speech-quality metrics like SSNR and PESQ across datasets.</p>
+        <div class="info-row" data-i18n="proj3.title">Speech Denoising · BabbleLabs (Cisco)</div>
+        <p data-i18n="proj3.p">Designed and trained a U-Net speech-denoising model in PyTorch, from data preprocessing to training, and evaluated it with speech-quality metrics like SSNR and PESQ across datasets.</p>
       </div>
     </div>
   </div>
@@ -567,9 +582,9 @@
 <!-- ============ FIELD / GALLERY ============ -->
 <section id="field" class="section">
   <div class="sec-head mono" data-reveal style="margin-bottom:14px;">
-    <span class="sec-num">/ 03</span><span class="sec-label">FIELD CAPTURE</span><span class="sec-rule"></span>
+    <span class="sec-num">/ 03</span><span class="sec-label" data-i18n="sec.field">FIELD CAPTURE</span><span class="sec-rule"></span>
   </div>
-  <h2 class="lede2" data-reveal>Shot from above.</h2>
+  <h2 class="lede2" data-reveal data-i18n="field.lede">Shot from above.</h2>
 
   <div class="gallery">
     <div class="frame big" data-reveal data-lock="DRONE DAWG">
@@ -579,7 +594,7 @@
     </div>
 
     <div class="frame big" data-reveal data-delay="60" data-lock="AERIAL STILLS" data-slideshow>
-      <div class="ph">AERIAL STILLS</div>
+      <div class="ph" data-i18n="field.ph.aerial">AERIAL STILLS</div>
       <img src="images/aerial-1.jpg" alt="Aerial drone photo" class="slide active" loading="lazy">
       <img src="images/aerial-2.jpg" alt="Aerial drone photo" class="slide" loading="lazy">
       <img src="images/aerial-3.jpg" alt="Aerial drone photo" class="slide" loading="lazy">
@@ -589,35 +604,35 @@
       <img src="images/aerial-7.jpg" alt="Aerial drone photo" class="slide" loading="lazy">
       <img src="images/aerial-8.jpg" alt="Aerial drone photo" class="slide" loading="lazy">
       <div class="frame-cap mono">
-        <div class="rec">◉ AERIAL · STILLS</div>
+        <div class="rec" data-i18n="field.rec">◉ AERIAL · STILLS</div>
         <div class="slide-dots"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
       </div>
     </div>
 
     <div class="frame wide" data-reveal data-delay="60" data-lock="FRAME 05">
-      <div class="ph">SWITCHBACKS</div>
+      <div class="ph" data-i18n="field.sb.ph">SWITCHBACKS</div>
       <img src="images/field-05.jpg" alt="Aerial shot, switchbacks" loading="lazy" onerror="this.style.display='none'">
-      <div class="frame-cap mono"><div class="cap-main" style="font-size:12px;">SWITCHBACKS</div></div>
+      <div class="frame-cap mono"><div class="cap-main" style="font-size:12px;" data-i18n="field.sb.cap">SWITCHBACKS</div></div>
     </div>
 
     <div class="frame wide" data-reveal data-delay="120" data-lock="FRAME 06">
-      <div class="ph">ADD FOOTAGE</div>
+      <div class="ph" data-i18n="field.ph.add">ADD FOOTAGE</div>
       <img src="images/field-06.jpg" alt="Aerial shot" loading="lazy" onerror="this.style.display='none'">
       <div class="frame-cap mono"><div class="rec">◉ REC · 02:30</div></div>
     </div>
   </div>
-  <div class="gallery-note mono">// drop your aerials into <strong>images/field-05.jpg</strong> and <strong>field-06.jpg</strong>, they slot right in.</div>
+  <div class="gallery-note mono" data-i18n="field.note">// drop your aerials into <strong>images/field-05.jpg</strong> and <strong>field-06.jpg</strong>, they slot right in.</div>
 </section>
 
 <!-- ============ CONTACT ============ -->
 <section id="contact" class="section" style="padding-bottom:60px;">
   <div class="contact-panel" data-reveal data-lock="COMMS · OPEN">
     <div class="contact-cmd mono"><span style="color:var(--ac);">$</span> contact --open</div>
-    <h2>Let's build<br>something that moves.</h2>
-    <p class="contact-lead">Open to robotics &amp; autonomy work, drone cinematography, and a good conversation about control theory.</p>
+    <h2 data-i18n="contact.h2">Let's build<br>something that moves.</h2>
+    <p class="contact-lead" data-i18n="contact.lead">Open to robotics &amp; autonomy work, drone cinematography, and a good conversation about control theory.</p>
     <div class="btns mono">
       <a class="btn primary" href="mailto:aravindsairam1995@gmail.com">→ EMAIL</a>
-      <a class="btn ghost" href="uploads/Aravind_Sairam_resume.pdf" target="_blank" rel="noopener">RESUME ↗</a>
+      <a class="btn ghost" href="uploads/Aravind_Sairam_resume.pdf" target="_blank" rel="noopener" data-i18n="btn.resume">RESUME ↗</a>
       <a class="btn ghost" href="https://github.com/aravindsairam" target="_blank" rel="noopener">GITHUB</a>
       <a class="btn ghost" href="https://www.linkedin.com/in/aravind-sairam" target="_blank" rel="noopener">LINKEDIN</a>
       <a class="btn ghost" href="https://www.instagram.com/drone.dawg/" target="_blank" rel="noopener">INSTAGRAM</a>
@@ -625,9 +640,9 @@
   </div>
 
   <footer class="mono">
-    <span>© 2026 ARAVIND SAIRAM SUBBURAM · BUILT IN HTML</span>
+    <span data-i18n="footer.copy">© 2026 ARAVIND SAIRAM SUBBURAM · BUILT IN HTML</span>
     <span data-clock>00:00:00 UTC</span>
-    <span>SYS: <span class="ok">NOMINAL</span></span>
+    <span>SYS: <span class="ok" data-i18n="footer.sys">NOMINAL</span></span>
   </footer>
 </section>
 
@@ -690,17 +705,123 @@
     if (!any) els.forEach(function (el) { el.style.transition = 'none'; show(el); });
   }, 1800);
 
-  // ---- Typed hero line ----
+  // ---- Typed hero line (retyped on language switch) ----
   var tEl = root.querySelector('[data-type]');
-  if (tEl) {
-    var full = tEl.getAttribute('data-text') || '';
+  var typTimer = null;
+  var typeLine = function (text) {
+    if (!tEl) return;
+    if (typTimer) clearInterval(typTimer);
     tEl.textContent = '';
     var i = 0;
-    var typ = setInterval(function () {
-      tEl.textContent = full.slice(0, ++i);
-      if (i >= full.length) clearInterval(typ);
+    typTimer = setInterval(function () {
+      tEl.textContent = text.slice(0, ++i);
+      if (i >= text.length) clearInterval(typTimer);
     }, 42);
-  }
+  };
+
+  // ---- Language toggle (EN / PL). English lives in the markup and is
+  //      captured at load; Polish swaps in from this dictionary. Default is
+  //      English; the choice persists in localStorage like the theme. ----
+  var PL = {
+    'nav.brand': 'WITAJ',
+    'nav.about': '·O MNIE',
+    'nav.work': '·PRACA',
+    'nav.field': '·TEREN',
+    'nav.contact': '·KONTAKT',
+    'theme.night': 'NOC',
+    'theme.day': 'DZIEŃ',
+    'hero.eyebrow': 'INŻYNIER&nbsp;ROBOTYKI&nbsp;I&nbsp;AI',
+    'hero.lead1': 'Pochodzę z Chennai w Indiach, a obecnie mieszkam w Warszawie. Zawodowo piszę oprogramowanie dla robotów i dronów, co dobrze się składa, bo programowaniem i budowaniem rzeczy i tak bym się zajmował. Poza pracą latam dronami i mam uprawnienia do lotów zarówno w Indiach, jak i w UE. Gram w gry komputerowe i jestem wielkim fanem God of War. Oglądam sporo MMA i boksu.',
+    'hero.lead2': 'Uwielbiam gotować indyjskie jedzenie i próbować kuchni z różnych stron świata, co jest połową powodu, dla którego lubię podróżować. Ciekawi mnie też inwestowanie i ekonomia, choć bardziej to, jak działają firmy, niż samo granie na giełdzie. Mówię po tamilsku i angielsku, trochę po francusku, a niedawno zacząłem uczyć się polskiego. Są dni, kiedy się nudzę i po prostu siedzę, nic nie robiąc, i to też jest w porządku.',
+    'hero.typed': 'wszystkie systemy w normie. zgoda na start.',
+    'hero.scroll': 'PRZEWIŃ',
+    'sec.profile': 'PROFIL',
+    'sec.trajectory': 'TRAJEKTORIA',
+    'sec.field': 'MATERIAŁ Z TERENU',
+    'about.lead': 'Jestem inżynierem robotyki i AI z ponad pięcioletnim doświadczeniem w budowaniu systemów autonomii i percepcji, <span class="hi">w powietrzu i na ziemi</span>. Większość mojej pracy sprowadza się do tego, żeby drony i roboty rozumiały, co je otacza, i decydowały, co robić dalej.',
+    'card.robotics.tag': '▲ ROBOTYKA',
+    'card.meta1': 'DOMENA·01',
+    'card.meta2': 'DOMENA·02',
+    'card.robotics.h3': 'Robotyka i autonomia',
+    'card.ai.h3': 'AI i percepcja',
+    'card.stack.h3': 'Kod, w którym żyję',
+    'certs.label': '◷ LICENCJONOWANY PILOT',
+    'cert.dgca': 'Certyfikowany pilot dronów DGCA',
+    'cert.eu': 'Pilot dronów A1/A3',
+    'work.lede': 'Pięć lat w terenie.',
+    'job1.role': 'Starszy inżynier oprogramowania robotyki',
+    'job1.period': 'KWI 2024 → OBECNIE<br>ZDALNIE',
+    'job1.b1': 'Zbudowałem cyfrowego bliźniaka niestandardowego robota omnikierunkowego w Isaac Sim i wdrożyłem stos symulacyjnych testów regresyjnych na AWS EC2 do automatycznej walidacji przed testami w terenie.',
+    'job1.b2': 'Dostroiłem Isaac ROS Visual SLAM ze stereo VIO i lokalizacją na 2D-LiDAR, uzyskując niezawodną nawigację gotową na systemy wbudowane.',
+    'job1.b3': 'Dostarczyłem interfejs sterowania robotem w języku naturalnym oparty na LangChain/LangGraph z percepcją zero-shot (GroundingDINO + SAM).',
+    'job1.b4': 'Zaprojektowałem manewry czyszczące dla automatycznego drona z niestandardowymi trybami PX4 oraz planer pokrycia w Nav2 dla naziemnych robotów do mycia ciśnieniowego.',
+    'job1.b5': 'Zbudowałem maszynę stanów misji w BehaviorTree.CPP z węzłami lifecycle i diagnostyką do wykrywania usterek i przywracania sprawności.',
+    'job2.role': 'Programista',
+    'job2.period': 'CZE 2023 → KWI 2024<br>ZDALNIE',
+    'job2.b1': 'Rozwijałem oprogramowanie sterujące dla dronów wielowirnikowych i łazików z napędem różnicowym w Pythonie, ROS, PX4 i MAVSDK.',
+    'job2.b2': 'Współpracowałem z zespołami hardware przy konfiguracji, wgrywaniu i testowaniu niestandardowego firmware\'u PX4, dostrojonego do dynamiki każdego pojazdu.',
+    'job2.b3': 'Zaimplementowałem nawigację wewnątrz budynków bez GPS z użyciem odometrii wizyjno-inercyjnej i czujników głębi.',
+    'job2.b4': 'Zbudowałem środowisko symulacyjne w Gazebo do walidacji sterowania i nawigacji przed wdrożeniem w terenie.',
+    'job3.role': 'Programista robotyki',
+    'job3.period': 'LIP 2020 → MAJ 2023<br>WARSZAWA, PL',
+    'job3.b1': 'Zbudowałem aplikację diagnostyczną ROS w C++ do monitorowania stanu systemu i telemetrii na różnych platformach robotów.',
+    'job3.b2': 'Zaimplementowałem filtrowanie chmur punktów w czasie rzeczywistym dla strumieni z LiDAR-ów i kamer głębi z użyciem PCL.',
+    'job3.b3': 'Stworzyłem narzędzia do kalibracji wewnętrznej i zewnętrznej kamer, LiDAR-ów i czujników ToF z użyciem RANSAC i ICP.',
+    'job3.b4': 'Prototypowałem pipeline\'y percepcji: segmentację instancji YOLOv7 rzutowaną na chmury punktów 3D oraz estymację pozy 6D celu dokowania z filtrem cząsteczkowym.',
+    'job4.role': 'Programista Python',
+    'job4.period': 'LUT 2018 → WRZ 2018<br>HAJDARABAD, IN',
+    'job4.b1': 'Zbudowałem pipeline wstępnego przetwarzania dla systemu wykrywania mediów syntetycznych z użyciem OpenCV i TensorFlow.',
+    'job4.b2': 'Prowadziłem analizę eksploracyjną multimedialnych zbiorów danych w pandas i Matplotlib, poprawiając jakość danych i tempo iteracji modeli.',
+    'edu.tag': '◇ WYKSZTAŁCENIE',
+    'edu.msc': 'Magister informatyki',
+    'edu.msc.sub': 'Politechnika Warszawska · 2021',
+    'edu.be': 'Inżynier elektroniki i telekomunikacji',
+    'certs2.tag': '◇ CERTYFIKATY',
+    'proj.tag': '◆ WYBRANE PROJEKTY',
+    'proj1.title': 'Budowa drona FPV',
+    'proj1.p': 'Zbudowałem własnego 5-calowego drona FPV z łączem sterowania ExpressLRS i cyfrowym wideo Walksnail, ręcznie strojąc wszystko od silników i ESC po PID-y. Latam nim zarówno filmowo, jak i freestyle.',
+    'proj2.title': 'Chatbot RAG · Willeder Inc',
+    'proj2.p': 'Chatbot obsługi klienta dla salonu, zbudowany na LLM-ach OpenAI, LangChain i Faiss nad przygotowaną bazą wiedzy. Pamięć sesji z podsumowywaniem utrzymuje spójność długich rozmów.',
+    'proj3.title': 'Odszumianie mowy · BabbleLabs (Cisco)',
+    'proj3.p': 'Zaprojektowałem i wytrenowałem w PyTorchu model U-Net do odszumiania mowy, od przygotowania danych po trening, i oceniłem go metrykami jakości mowy, takimi jak SSNR i PESQ, na różnych zbiorach danych.',
+    'field.lede': 'Ujęcia z góry.',
+    'field.ph.aerial': 'FOTO LOTNICZE',
+    'field.rec': '◉ FOTO · Z POWIETRZA',
+    'field.sb.ph': 'SERPENTYNY',
+    'field.sb.cap': 'SERPENTYNY',
+    'field.ph.add': 'DODAJ MATERIAŁ',
+    'field.note': '// wrzuć swoje ujęcia do <strong>images/field-05.jpg</strong> i <strong>field-06.jpg</strong>, a wskoczą na swoje miejsce.',
+    'contact.h2': 'Zbudujmy coś,<br>co się porusza.',
+    'contact.lead': 'Jestem otwarty na pracę przy robotyce i autonomii, filmowanie z drona i dobrą rozmowę o teorii sterowania.',
+    'btn.resume': 'CV ↗',
+    'footer.copy': '© 2026 ARAVIND SAIRAM SUBBURAM · ZROBIONE W HTML',
+    'footer.sys': 'W NORMIE'
+  };
+
+  (function () {
+    var de = document.documentElement;
+    var btn = root.querySelector('[data-lang-toggle]');
+    var nodes = root.querySelectorAll('[data-i18n]');
+    var en = new WeakMap();
+    nodes.forEach(function (el) { en.set(el, el.innerHTML); });
+    var typedEn = tEl ? (tEl.getAttribute('data-text') || '') : '';
+    var apply = function (lang) {
+      de.setAttribute('data-lang', lang);
+      de.setAttribute('lang', lang);
+      nodes.forEach(function (el) {
+        var k = el.getAttribute('data-i18n');
+        el.innerHTML = (lang === 'pl' && PL[k]) ? PL[k] : en.get(el);
+      });
+      typeLine(lang === 'pl' ? PL['hero.typed'] : typedEn);
+    };
+    var lang = de.getAttribute('data-lang') === 'pl' ? 'pl' : 'en';
+    apply(lang);
+    if (btn) btn.addEventListener('click', function () {
+      lang = lang === 'pl' ? 'en' : 'pl';
+      apply(lang);
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    });
+  })();
 
   // ---- Live UTC clock ----
   setInterval(function () {
