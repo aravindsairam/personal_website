@@ -11,3 +11,10 @@ Thumbs.db
 
 # Internal design/dev notes (not part of the published site)
 docs/
+
+# Raw media originals (the compressed *-web.mp4 / aerial-*.jpg versions are tracked)
+images/DJI_*
+images/dummy_10.mp4
+images/race.mp4
+images/village.mp4
+images/lv_0_*

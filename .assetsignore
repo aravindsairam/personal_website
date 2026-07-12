@@ -9,3 +9,10 @@ README.md
 node_modules/
 docs/
 .thumbnail
+
+# Raw media originals (only the compressed web versions are served)
+images/DJI_*
+images/dummy_10.mp4
+images/race.mp4
+images/village.mp4
+images/lv_0_*
